@@ -14,7 +14,7 @@ public class ItemDivider extends RecyclerView.ItemDecoration {
 
     /**
      * @param resources Resources
-     * @param dp 分割的高度
+     * @param dp 分割线的高度
      */
     public ItemDivider(Resources resources, int dp) {
         super();
