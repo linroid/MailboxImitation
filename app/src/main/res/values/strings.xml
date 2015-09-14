@@ -3,4 +3,18 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="sample_title">这是第%d个</string>
+    <string name="sample_description">Hi,张林
+
+简历我们已经收到 ：）
+
+我们经过仔细阅读你的简历后，为了解你与职位的匹配度，想先请你做一道笔试题。
+
+邮件同时抄送了我们的 Android 工程师朱俊官，他是担任这个职位的技术面试官，关于笔试题回复也请邮件抄送给他。
+
+题目：页面上有一个列表，列表项可以左右滑动，具体效果参照附件和Mailbox Android或iOS客户端
+
+请独立完成并保证代码质量。项目请托管在github上，你可以先看下题目要求，然后告诉我们需要多少时间，最后把做好的项目地址发给我们。
+
+收到请回复确认，有问题邮件沟通。</string>
 </resources>

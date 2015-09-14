@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_background">#E4E4E4</color>
+    <color name="item_title">#404040</color>
+    <color name="item_description">#BFBFBF</color>
+    <color name="item_time">#BFBFBF</color>
+    <color name="item_background_pressed">#EDEDED</color>
+</resources>
