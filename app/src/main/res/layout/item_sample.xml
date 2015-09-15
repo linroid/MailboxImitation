@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.linroid.interview.teambition.MailboxSwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:leftActionView="@layout/sample_left_action"
+    app:rightActionView="@layout/sample_right_action">
 
     <RelativeLayout
         android:layout_width="match_parent"

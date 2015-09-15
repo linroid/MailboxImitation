@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="swipeLayout"></declare-styleable>
+    <declare-styleable name="MailboxSwipeLayout">
+        <attr name="rightActionView" format="reference"/>
+        <attr name="leftActionView" format="reference"/>
+    </declare-styleable>
 </resources>

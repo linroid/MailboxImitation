@@ -17,9 +17,11 @@
 请独立完成并保证代码质量。项目请托管在github上，你可以先看下题目要求，然后告诉我们需要多少时间，最后把做好的项目地址发给我们。
 
 收到请回复确认，有问题邮件沟通。</string>
-    <string name="sample_left_action">已归档</string>
-    <string name="sample_left_left_action">已移除</string>
-    <string name="sample_right_action">已推迟</string>
-    <string name="sample_right_right_action">已加入列表</string>
+    <string name="sample_left_near_action">onLeftNearAction</string>
+    <string name="sample_left_far_action">onLeftFarAction</string>
+    <string name="sample_right_near_action">onRightNearAction</string>
+    <string name="sample_right_far_action">onRightFarAction</string>
     <string name="btn_undo">撤销</string>
+    <string name="sample_left_long_drag_action">onLeftLongDragAction</string>
+    <string name="sample_right_long_drag_action">onRightLongDragAction</string>
 </resources>

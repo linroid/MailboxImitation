@@ -1,7 +1,5 @@
 package com.linroid.interview.teambition;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +11,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import hugo.weaving.DebugLog;
 
 /**
  * Created by linroid(http://linroid.com)
@@ -59,30 +58,52 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleAdapter.SampleHold
             super(itemView);
             ButterKnife.bind(this, itemView);
             swipeLayout.setOnSwipeActionListener(this);
+            swipeLayout.close();
+        }
+
+        @DebugLog
+        @Override
+        public void onLeftNearAction() {
+            remove(R.string.sample_left_near_action, getAdapterPosition());
+        }
+
+        @DebugLog
+        @Override
+        public void onLeftFarAction() {
+            remove(R.string.sample_left_far_action, getAdapterPosition());
+            swipeLayout.close();
+        }
+
+        @DebugLog
+        @Override
+        public void onRightNearAction() {
+            Snackbar.make(swipeLayout, R.string.sample_right_near_action, Snackbar.LENGTH_SHORT).show();
+            swipeLayout.close(true);
+        }
+
+        @DebugLog
+        @Override
+        public void onRightFarAction() {
+            Snackbar.make(swipeLayout, R.string.sample_right_far_action, Snackbar.LENGTH_SHORT).show();
+            swipeLayout.close(true);
         }
 
         @Override
-        public void onLeftAction() {
-            remove(R.string.sample_left_action, getAdapterPosition());
+        public void onLeftLongDragAction() {
+            Snackbar.make(swipeLayout, R.string.sample_left_long_drag_action, Snackbar.LENGTH_SHORT).show();
+            swipeLayout.close(true);
         }
 
         @Override
-        public void onLeftLeftAction() {
-            remove(R.string.sample_left_left_action, getAdapterPosition());
-        }
-
-        @Override
-        public void onRightAction() {
-            Snackbar.make(swipeLayout, R.string.sample_right_action, Snackbar.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onRightRightAction() {
-            Snackbar.make(swipeLayout, R.string.sample_right_right_action, Snackbar.LENGTH_SHORT).show();
+        public void onRightLongDragAction() {
+            Snackbar.make(swipeLayout, R.string.sample_right_long_drag_action, Snackbar.LENGTH_SHORT).show();
+            swipeLayout.close(true);
         }
 
         public void remove(int msgResId, final int position) {
-
+            if (position < 0) {
+                return;
+            }
             final String title = data.remove(position);
             notifyItemRemoved(position);
             Snackbar.make(swipeLayout, msgResId, Snackbar.LENGTH_SHORT)

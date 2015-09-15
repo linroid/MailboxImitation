@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.linroid.interview.teambition.ActionView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:nearColor="@android:color/holo_orange_light"
+    app:nearDrawable="@drawable/ic_action_clock"
+    app:farColor="@android:color/holo_purple"
+    app:farDrawable="@drawable/ic_action_list">
+</com.linroid.interview.teambition.ActionView>

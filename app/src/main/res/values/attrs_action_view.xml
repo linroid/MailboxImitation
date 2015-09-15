@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="ActionView">
+        <attr name="actionDimension" format="dimension" />
+        <attr name="farColor" format="color" />
+        <attr name="farDrawable" format="color|reference" />
+        <attr name="nearColor" format="color" />
+        <attr name="nearDrawable" format="color|reference" />
+    </declare-styleable>
+</resources>

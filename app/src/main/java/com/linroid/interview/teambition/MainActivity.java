@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 /**
  * Created by linroid(http://linroid.com)
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         ButterKnife.bind(this);
         setupRecyclerView();
         setupRefresher();
+        Timber.plant(new Timber.DebugTree());
     }
 
     /**
