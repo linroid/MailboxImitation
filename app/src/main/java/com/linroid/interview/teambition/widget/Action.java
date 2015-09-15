@@ -1,4 +1,4 @@
-package com.linroid.interview.teambition;
+package com.linroid.interview.teambition.widget;
 
 import android.graphics.drawable.Drawable;
 

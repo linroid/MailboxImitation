@@ -1,4 +1,4 @@
-package com.linroid.interview.teambition;
+package com.linroid.interview.teambition.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.linroid.interview.teambition.R;
 
 import hugo.weaving.DebugLog;
 import timber.log.Timber;

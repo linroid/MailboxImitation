@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.linroid.interview.teambition.widget.MailboxSwipeLayout;
+
 import java.util.List;
 
 import butterknife.Bind;

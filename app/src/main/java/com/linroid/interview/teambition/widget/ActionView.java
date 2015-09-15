@@ -1,4 +1,4 @@
-package com.linroid.interview.teambition;
+package com.linroid.interview.teambition.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -19,6 +19,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+
+import com.linroid.interview.teambition.R;
 
 import hugo.weaving.DebugLog;
 import timber.log.Timber;

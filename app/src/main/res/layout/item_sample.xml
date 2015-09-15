@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.linroid.interview.teambition.MailboxSwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.linroid.interview.teambition.widget.MailboxSwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeLayout"
@@ -46,4 +46,4 @@
             android:text="19:18"
             android:textColor="@color/item_time" />
     </RelativeLayout>
-</com.linroid.interview.teambition.MailboxSwipeLayout>
+</com.linroid.interview.teambition.widget.MailboxSwipeLayout>
