@@ -265,7 +265,7 @@ public class MailboxSwipeLayout extends FrameLayout implements ActionView.Callba
         }
     }
 
-    interface OnSwipeActionListener {
+    public interface OnSwipeActionListener {
         void onLeftNearAction();
 
         void onLeftFarAction();

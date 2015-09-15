@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -88,5 +89,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Override
     public void onRefresh() {
         adapter.setData(SampleUtils.generateSampleListData(getResources()));
+        refresher.setRefreshing(false);
+        Toast.makeText(this, R.string.msg_refresh_success, Toast.LENGTH_SHORT).show();
     }
 }
