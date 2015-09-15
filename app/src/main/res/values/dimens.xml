@@ -7,4 +7,5 @@
     <dimen name="action_icon_size">32dp</dimen>
     <dimen name="action_arrow_radius">20dp</dimen>
     <dimen name="action_arrow_width">4dp</dimen>
+    <dimen name="action_arrow_size">12dp</dimen>
 </resources>

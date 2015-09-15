@@ -65,6 +65,10 @@ public class ActionView extends View {
     private int mIconSize;
 
     /**
+     * 三角箭头的变长大小
+     */
+    private int mArrowSize;
+    /**
      * 箭头进度
      **/
     private int mArrowProgress = 0;
@@ -129,6 +133,7 @@ public class ActionView extends View {
 
         mArrowPaint.setStrokeWidth(resources.getDimensionPixelSize(R.dimen.action_arrow_width));
         mArrowRadius = getResources().getDimensionPixelSize(R.dimen.action_arrow_radius);
+        mArrowSize = getResources().getDimensionPixelSize(R.dimen.action_arrow_size);
 
         mArrowAnimator = ObjectAnimator.ofObject(this, "arrowProgress", new IntEvaluator(), 0, 100);
         mArrowAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -189,11 +194,15 @@ public class ActionView extends View {
             setTranslationX(getWidth() - Math.abs(offsetX));
         }
         if (absX == getWidth()) {
-            // make switch state enable
-            disallowSwitchState = false;
             setShowIcon(false);
         } else {
             setShowIcon(true);
+        }
+
+
+        // make switch state enable
+        if (absX == getWidth() || absX == 0) {
+            disallowSwitchState = false;
         }
 
     }
@@ -248,6 +257,7 @@ public class ActionView extends View {
     public void requestDisallowSwitchState() {
         disallowSwitchState = true;
     }
+
     /**
      * 切换状态
      *
@@ -393,10 +403,25 @@ public class ActionView extends View {
     private void drawOvalAndArrow(Canvas canvas) {
 //        canvas.drawArc(mArrowBounds, -90f, 360.f * mArrowProgress / 100.f, true, mArrowPaint);
 
-        Path arrowPath = new Path();
-        arrowPath.addArc(mArrowBounds, -90, 360.f * mArrowProgress / 100.f);
+        float sweepAngle = 360.f * mArrowProgress / 100.f - 10.f;
+        Path arcPath = new Path();
+        arcPath.addArc(mArrowBounds, -90, sweepAngle);
         //draw oval
+        mArrowPaint.setStyle(Paint.Style.STROKE);
+        canvas.drawPath(arcPath, mArrowPaint);
+
+
+        Path arrowPath = new Path();
+        arrowPath.moveTo(mArrowCenter.x, mArrowBounds.top + mArrowSize/2);
+        arrowPath.lineTo(mArrowCenter.x + (float) Math.sqrt(mArrowSize * mArrowSize - mArrowSize * mArrowSize / 4), mArrowBounds.top);
+        arrowPath.lineTo(mArrowCenter.x, mArrowBounds.top - mArrowSize/2);
+        arrowPath.moveTo(mArrowCenter.x, mArrowBounds.top + mArrowSize/2);
+        mArrowPaint.setStyle(Paint.Style.FILL);
+        canvas.rotate(sweepAngle, mArrowCenter.x, mArrowCenter.y);
         canvas.drawPath(arrowPath, mArrowPaint);
+        canvas.save();
+
+        canvas.restore();
 //
 //        arrowPath.moveTo(0, -10);
 //        arrowPath.lineTo(5, 0);
