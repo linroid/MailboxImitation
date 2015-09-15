@@ -202,6 +202,7 @@ public class MailboxSwipeLayout extends FrameLayout implements ActionView.Callba
             if (offsetX < 0) {
                 //右边出来
                 final ActionView.State state = mRightActionView.getState();
+                mLeftActionView.requestDisallowSwitchState();
                 offsetX = -(getWidth() + getPaddingLeft());
                 if (mListener != null) {
                     postDelayed(new Runnable() {
@@ -220,7 +221,7 @@ public class MailboxSwipeLayout extends FrameLayout implements ActionView.Callba
                 offsetX = getRight() - getPaddingRight();
                 if (mListener != null) {
                     final ActionView.State state = mLeftActionView.getState();
-
+                    mLeftActionView.requestDisallowSwitchState();
                     postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -237,6 +238,7 @@ public class MailboxSwipeLayout extends FrameLayout implements ActionView.Callba
             offsetX = getPaddingLeft();
         }
         mDragHelper.smoothSlideViewTo(child, offsetX, getPaddingTop());
+
         ViewCompat.postInvalidateOnAnimation(MailboxSwipeLayout.this);
     }
 

@@ -34,6 +34,7 @@ public class ActionView extends View {
     private static final long ARROW_ANIM_DURATION = 1000;
     private static final long ARROW_ANIM_START_DELAY = 500;
 
+
     enum Direction {
         Left,
         Right
@@ -75,6 +76,7 @@ public class ActionView extends View {
     private int mArrowRadius;
     private RectF mArrowBounds = new RectF();
     private boolean mShowIcon = true;
+    private boolean disallowSwitchState = false;
     /**
      * 箭头动画
      **/
@@ -187,6 +189,8 @@ public class ActionView extends View {
             setTranslationX(getWidth() - Math.abs(offsetX));
         }
         if (absX == getWidth()) {
+            // make switch state enable
+            disallowSwitchState = false;
             setShowIcon(false);
         } else {
             setShowIcon(true);
@@ -239,6 +243,12 @@ public class ActionView extends View {
     }
 
     /**
+     * 调用后不会改变状态，直到拖拽结束
+     */
+    public void requestDisallowSwitchState() {
+        disallowSwitchState = true;
+    }
+    /**
      * 切换状态
      *
      * @param state 要切换的状态
@@ -247,8 +257,11 @@ public class ActionView extends View {
         if (state == null) {
             throw new IllegalArgumentException("argument 'state' cannot be null");
         }
+        if (disallowSwitchState) {
+            Timber.e("disallowSwitchState");
+            return;
+        }
         if (mState != state) {
-
             //移除动画
             if (mState != State.Near) {
                 Timber.d("移除动画");
@@ -309,8 +322,9 @@ public class ActionView extends View {
         if (prevState != State.Attempt) {
             setStateIcon(State.Near);
         }
-//        if (prevState != State.Far) {
-        postDelayed(mAnimRunnable, ARROW_ANIM_START_DELAY);
+        if (!disallowSwitchState) {
+            postDelayed(mAnimRunnable, ARROW_ANIM_START_DELAY);
+        }
     }
 
     /**
