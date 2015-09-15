@@ -410,28 +410,18 @@ public class ActionView extends View {
         mArrowPaint.setStyle(Paint.Style.STROKE);
         canvas.drawPath(arcPath, mArrowPaint);
 
-
+        //draw arrow
         Path arrowPath = new Path();
-        arrowPath.moveTo(mArrowCenter.x, mArrowBounds.top + mArrowSize/2);
+        arrowPath.close();
+        arrowPath.moveTo(mArrowCenter.x, mArrowBounds.top + mArrowSize / 2);
         arrowPath.lineTo(mArrowCenter.x + (float) Math.sqrt(mArrowSize * mArrowSize - mArrowSize * mArrowSize / 4), mArrowBounds.top);
-        arrowPath.lineTo(mArrowCenter.x, mArrowBounds.top - mArrowSize/2);
-        arrowPath.moveTo(mArrowCenter.x, mArrowBounds.top + mArrowSize/2);
+        arrowPath.lineTo(mArrowCenter.x, mArrowBounds.top - mArrowSize / 2);
+        arrowPath.moveTo(mArrowCenter.x, mArrowBounds.top + mArrowSize / 2);
         mArrowPaint.setStyle(Paint.Style.FILL);
+        canvas.save();
         canvas.rotate(sweepAngle, mArrowCenter.x, mArrowCenter.y);
         canvas.drawPath(arrowPath, mArrowPaint);
-        canvas.save();
-
         canvas.restore();
-//
-//        arrowPath.moveTo(0, -10);
-//        arrowPath.lineTo(5, 0);
-//        arrowPath.lineTo(-5, 0);
-//        arrowPath.offset(mArrowCenter.x, mArrowCenter.y);
-//        canvas.save();
-//        canvas.rotate(360.f * mArrowProgress / 100.f);
-//        //draw arrow
-//        canvas.drawPath(arrowPath, mArrowPaint);
-//        canvas.restore();
 
 
     }
