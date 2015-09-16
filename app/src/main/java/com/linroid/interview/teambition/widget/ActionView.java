@@ -80,7 +80,7 @@ public class ActionView extends View {
     private int mArrowRadius;
     private RectF mArrowBounds = new RectF();
     private boolean mShowIcon = true;
-    private boolean disallowSwitchState = false;
+    private boolean mDisallowSwitchState = false;
     /**
      * 箭头动画
      **/
@@ -202,7 +202,7 @@ public class ActionView extends View {
 
         // make switch state enable
         if (absX == getWidth() || absX == 0) {
-            disallowSwitchState = false;
+            mDisallowSwitchState = false;
         }
 
     }
@@ -255,7 +255,7 @@ public class ActionView extends View {
      * 调用后不会改变状态，直到拖拽结束
      */
     public void requestDisallowSwitchState() {
-        disallowSwitchState = true;
+        mDisallowSwitchState = true;
     }
 
     /**
@@ -267,8 +267,8 @@ public class ActionView extends View {
         if (state == null) {
             throw new IllegalArgumentException("argument 'state' cannot be null");
         }
-        if (disallowSwitchState) {
-            Timber.e("disallowSwitchState");
+        if (mDisallowSwitchState) {
+            Timber.e("mDisallowSwitchState");
             return;
         }
         if (mState != state) {
@@ -313,6 +313,7 @@ public class ActionView extends View {
      * 显示刚刚滑出时的状态
      */
     private void showAttempt() {
+        mDisallowSwitchState = false;
         setBackgroundColor(Color.TRANSPARENT);
         if (canSwitchFar()) {
             setStateIcon(State.Attempt);
@@ -332,7 +333,7 @@ public class ActionView extends View {
         if (prevState != State.Attempt) {
             setStateIcon(State.Near);
         }
-        if (!disallowSwitchState) {
+        if (!mDisallowSwitchState) {
             postDelayed(mAnimRunnable, ARROW_ANIM_START_DELAY);
         }
     }
@@ -344,6 +345,7 @@ public class ActionView extends View {
         if (mFarAction == null) {
             return;
         }
+        mDisallowSwitchState = false;
         setStateIcon(State.Far);
         ObjectAnimator animator = ObjectAnimator.ofObject(this, "backgroundColor", new ArgbEvaluator(), mNearAction.color, mFarAction.color);
         animator.setDuration(mShortAnimTime);
